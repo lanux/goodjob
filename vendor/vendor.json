@@ -1,0 +1,613 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "ey0rARX2z7cAXODz/h4pqEzKzkA=",
+			"origin": "github.com/kataras/iris/vendor/github.com/BurntSushi/toml",
+			"path": "github.com/BurntSushi/toml",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "KeBSXn6wE/A1le6ob3SDrpQdDyQ=",
+			"origin": "github.com/kataras/iris/vendor/github.com/Joker/jade",
+			"path": "github.com/Joker/jade",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "bJZ7ydtD+djI8fIJ5zlVlNNXsp4=",
+			"origin": "github.com/kataras/iris/vendor/github.com/Shopify/goreferrer",
+			"path": "github.com/Shopify/goreferrer",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "4kmqwKw+nQGwgKQVPmp9lNCpYb0=",
+			"origin": "github.com/kataras/iris/vendor/github.com/aymerick/raymond",
+			"path": "github.com/aymerick/raymond",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "BIEc8E2WmPzbnMTHCGsFqWUHZKI=",
+			"origin": "github.com/kataras/iris/vendor/github.com/aymerick/raymond/ast",
+			"path": "github.com/aymerick/raymond/ast",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "qv3O7rJvoJFUHmU1r+CYRFnUCKg=",
+			"origin": "github.com/kataras/iris/vendor/github.com/aymerick/raymond/lexer",
+			"path": "github.com/aymerick/raymond/lexer",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "smU3Mh5nZqvAKlnGsuzCRDU9c5c=",
+			"origin": "github.com/kataras/iris/vendor/github.com/aymerick/raymond/parser",
+			"path": "github.com/aymerick/raymond/parser",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "BEx8gHR3cYCuy6wQRWGiAuJYjmE=",
+			"origin": "github.com/kataras/iris/vendor/github.com/eknkc/amber",
+			"path": "github.com/eknkc/amber",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "KW1Iw3ecbzLfFpjJ/9f3wSbibQ0=",
+			"origin": "github.com/kataras/iris/vendor/github.com/eknkc/amber/parser",
+			"path": "github.com/eknkc/amber/parser",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "p0/HUfKTCiP9AfPoA3FWrqh+SYk=",
+			"origin": "github.com/kataras/iris/vendor/github.com/fatih/structs",
+			"path": "github.com/fatih/structs",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "2bOU+YMcT4E/rSz7YbLbNY4AIkY=",
+			"origin": "github.com/kataras/iris/vendor/github.com/flosch/pongo2",
+			"path": "github.com/flosch/pongo2",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "tf+bn/G8sfZq35Bv0ulW/4tbRsE=",
+			"path": "github.com/gorilla/securecookie",
+			"revision": "e65cf8c5df817c89aeb47ecb46064e802e2de943",
+			"revisionTime": "2018-10-10T17:46:47Z"
+		},
+		{
+			"checksumSHA1": "WdCkFYetDCT+Br8osINDnAUBp1I=",
+			"origin": "github.com/kataras/iris/vendor/github.com/iris-contrib/blackfriday",
+			"path": "github.com/iris-contrib/blackfriday",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "57A0csJWKSfXNny04h7utju9MJk=",
+			"origin": "github.com/kataras/iris/vendor/github.com/iris-contrib/formBinder",
+			"path": "github.com/iris-contrib/formBinder",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "pEu232nKZPUtOozag0CAlYBkLSM=",
+			"origin": "github.com/kataras/iris/vendor/github.com/iris-contrib/go.uuid",
+			"path": "github.com/iris-contrib/go.uuid",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "evTDqzzcWb15rxk/g83kkcs5vmM=",
+			"origin": "github.com/kataras/iris/vendor/github.com/json-iterator/go",
+			"path": "github.com/json-iterator/go",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "j9xdUar49EWT+UVgKcOb/s/BgZ8=",
+			"origin": "github.com/kataras/iris/vendor/github.com/flosch/pongo2/vendor/github.com/juju/errors",
+			"path": "github.com/juju/errors",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "wd3qD6vbSukJHuD02H9XywkVy9w=",
+			"path": "github.com/kataras/golog",
+			"revision": "03be101463868edc5a81f094fc68a5f6c1b5503a",
+			"revisionTime": "2018-03-21T17:39:39Z"
+		},
+		{
+			"checksumSHA1": "qf3eD1KQOr4xhtk8i3olcDY7gB0=",
+			"path": "github.com/kataras/iris",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "Bm0qvlIK4oSun+6c9HUAx6J4AFk=",
+			"path": "github.com/kataras/iris/cache",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "gKH6aiOz/Bu5pOPbNnM9FFaH//Q=",
+			"path": "github.com/kataras/iris/cache/cfg",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "Z/c4QG25XmzGL8J8gFQHUDPh0WU=",
+			"path": "github.com/kataras/iris/cache/client",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "kVJ04EN4S4+CReM7xanOlO/jeMA=",
+			"path": "github.com/kataras/iris/cache/client/rule",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "fTAyIYb5/27DQ+9GXebeP/ni3Ck=",
+			"path": "github.com/kataras/iris/cache/entry",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "W97H1uQJfjBd/N+oGg12X4uNVsg=",
+			"path": "github.com/kataras/iris/cache/ruleset",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "md+sGD9c7MuX1S4FI5X02c0gRAw=",
+			"path": "github.com/kataras/iris/cache/uri",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "jxVGE2cK/MPo+JIGjMHmKt7uyFo=",
+			"path": "github.com/kataras/iris/context",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "aetYj51r/s7SIRE23kPzhPIGzbI=",
+			"path": "github.com/kataras/iris/core/errors",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "C9HmizaGW5xm6tyfmxiNvzK41Ls=",
+			"path": "github.com/kataras/iris/core/handlerconv",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "qblCI8XMDWJMR9Rgs2dHlrwK9Aw=",
+			"path": "github.com/kataras/iris/core/host",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "zMC8rgLumiiZJ7CNL9rkdxzCPjQ=",
+			"path": "github.com/kataras/iris/core/memstore",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "NgLWwh4y8rxLfJWTFmOpp5qaeyY=",
+			"path": "github.com/kataras/iris/core/netutil",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "/qX8l4NmPcv2AaGxugxuMWKDAso=",
+			"path": "github.com/kataras/iris/core/router",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "96on8LIceHPPtumVocy9mHmLh0I=",
+			"path": "github.com/kataras/iris/macro",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "h/q+QXS/zy/lsYHe3f78q/mcINU=",
+			"path": "github.com/kataras/iris/macro/handler",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "LdQ1YCcXhfIE2EBSjLzWk+4Fum0=",
+			"path": "github.com/kataras/iris/macro/interpreter/ast",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "83uSK0siBzY57fCjH9UAVU4j1aQ=",
+			"path": "github.com/kataras/iris/macro/interpreter/lexer",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "f8Kxj3e66vbYF4/94KCevK80VbI=",
+			"path": "github.com/kataras/iris/macro/interpreter/parser",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "VIkJtfHIrAA2aInqcx8WVMIhy74=",
+			"path": "github.com/kataras/iris/macro/interpreter/token",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "eE1iIm7aeJAyhgWBMVILvhIkRPE=",
+			"path": "github.com/kataras/iris/middleware/logger",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "qlOU9gti5YWAtHxp3wmeKh+LH9I=",
+			"path": "github.com/kataras/iris/middleware/recover",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "6z31XBMj6qXKF8SmKl3hL9sozfo=",
+			"path": "github.com/kataras/iris/sessions",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "vLJqSRvHsIk1aZqbAb+tly2Yu9o=",
+			"path": "github.com/kataras/iris/view",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "H8FxTPFC/lt0wJHKyTD6HGpnlmU=",
+			"path": "github.com/kataras/pio",
+			"revision": "ea782b38602d1e5df3c2b891978a1f80d917a6bd",
+			"revisionTime": "2019-01-03T10:54:42Z"
+		},
+		{
+			"checksumSHA1": "9dgCIb83DxMacelORKbaAb60isI=",
+			"path": "github.com/kataras/pio/terminal",
+			"revision": "ea782b38602d1e5df3c2b891978a1f80d917a6bd",
+			"revisionTime": "2019-01-03T10:54:42Z"
+		},
+		{
+			"checksumSHA1": "ragSNHl7zVoG8J5w8whxquYwlxU=",
+			"origin": "github.com/kataras/iris/vendor/github.com/klauspost/compress/flate",
+			"path": "github.com/klauspost/compress/flate",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "TDWHzFMYgryx1EpJGFdPLOSFgyg=",
+			"origin": "github.com/kataras/iris/vendor/github.com/klauspost/compress/gzip",
+			"path": "github.com/klauspost/compress/gzip",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "HRAW9SRz5SRHHKsajjyZ4QGjQHs=",
+			"origin": "github.com/kataras/iris/vendor/github.com/klauspost/cpuid",
+			"path": "github.com/klauspost/cpuid",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "o4EMPnQEctHFsYUKEKogXDEiIUE=",
+			"origin": "github.com/kataras/iris/vendor/github.com/klauspost/crc32",
+			"path": "github.com/klauspost/crc32",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "QHbXiByIbaVjpjO3QKha7U4n/4s=",
+			"path": "github.com/markbates/goth",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "2E1Rg5SFHNrkNBn5oJwEgCnavrQ=",
+			"path": "github.com/markbates/goth/providers/amazon",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "nofkYyU5y10NhD2i23iOEYztW4M=",
+			"path": "github.com/markbates/goth/providers/auth0",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "F+Z3qQxy7jRXz0ukhMAhDUfYWvw=",
+			"path": "github.com/markbates/goth/providers/bitbucket",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "CYmnI9q9qEGZmucgXlHAPP5ULgM=",
+			"path": "github.com/markbates/goth/providers/box",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "wiLIebLbHet1qlM2K4GZZdkQOs8=",
+			"path": "github.com/markbates/goth/providers/dailymotion",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "bwhBzHpfJn9H/LzidXGOT9ttg8A=",
+			"path": "github.com/markbates/goth/providers/deezer",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "pecizPKH9ubC3aKNARxlDQr6K+0=",
+			"path": "github.com/markbates/goth/providers/digitalocean",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "nW23fUq/nuYydA7iPzJKCHoSbPY=",
+			"path": "github.com/markbates/goth/providers/discord",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "kQjJ93IrIIk7AFbIZZ4DDjhA5sk=",
+			"path": "github.com/markbates/goth/providers/dropbox",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "LYJ+ICtVESV0D/01p0bNvQ5ilY0=",
+			"path": "github.com/markbates/goth/providers/facebook",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "Jgz6jeepVWhFpnqWTcgD0ATwzkU=",
+			"path": "github.com/markbates/goth/providers/fitbit",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "7wTWW1y7jmYgrkzFHPSn4AzpfDM=",
+			"path": "github.com/markbates/goth/providers/github",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "80T/l5NOOXN3+bHSsg0I9kyMECo=",
+			"path": "github.com/markbates/goth/providers/gitlab",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "jCBtE4nhuCyKqB68p4Z07ZTGE74=",
+			"path": "github.com/markbates/goth/providers/gplus",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "U9ZBiNhXDjtW9zadIfsaADKZMic=",
+			"path": "github.com/markbates/goth/providers/heroku",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "5ZtBjQTVoWzMZhBfBox8KwIy0ms=",
+			"path": "github.com/markbates/goth/providers/instagram",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "Jk4OdtPAOTXo6q7i/fjKBaVauKE=",
+			"path": "github.com/markbates/goth/providers/intercom",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "V4ndAZymy99XmU9kfQ18qD0KVpg=",
+			"path": "github.com/markbates/goth/providers/lastfm",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "ORNdS4zhKqGa6IUqtWrMc3fUr1w=",
+			"path": "github.com/markbates/goth/providers/linkedin",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "P9DjE0UN90xp9AasAumtKvAxkoA=",
+			"path": "github.com/markbates/goth/providers/meetup",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "wu7W93+l0dREPRrwMZfCE/ofGyQ=",
+			"path": "github.com/markbates/goth/providers/onedrive",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "MMZz/Dus/c/VBAOD4/9WyGZ8luQ=",
+			"path": "github.com/markbates/goth/providers/openidConnect",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "yG9ot7NL/TkqKYMiILhJ4keTNcw=",
+			"path": "github.com/markbates/goth/providers/paypal",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "Q9Dvov/Bew2Qx1uRKrnt5htVk5E=",
+			"path": "github.com/markbates/goth/providers/salesforce",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "DRgOvm5nP0m6JCGjMs0CR9wLUbY=",
+			"path": "github.com/markbates/goth/providers/slack",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "S0am//+XU7cf2WhU/Tmc4pbNjEQ=",
+			"path": "github.com/markbates/goth/providers/soundcloud",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "IUfNbSSafy9DEVdZfUynIzwZoe0=",
+			"path": "github.com/markbates/goth/providers/spotify",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "SbLLiYsr6wJ14d8VC+xKKbFBsU4=",
+			"path": "github.com/markbates/goth/providers/steam",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "VVf2tHqiqkK2YMKGe+Ucl8m+TVI=",
+			"path": "github.com/markbates/goth/providers/stripe",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "MnxTLy/Hzehy+m6O2flKX/9ZhSo=",
+			"path": "github.com/markbates/goth/providers/twitch",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "ouIdIQe6zQtMI/PbQOENhJPkPH4=",
+			"path": "github.com/markbates/goth/providers/twitter",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "xLHsoOF0QQE6Wh8jdz0pKTz2z8Y=",
+			"path": "github.com/markbates/goth/providers/uber",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "fU9png1iE6Yc0lv27E3zIE1PJbM=",
+			"path": "github.com/markbates/goth/providers/wepay",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "AMg0nvPnvfh/X3hEtbwJXKACp8w=",
+			"path": "github.com/markbates/goth/providers/xero",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "rrGmYrBYwNdqvx8SlSBXkGeVa4M=",
+			"path": "github.com/markbates/goth/providers/yahoo",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "Q9dbR3X175SfPTlQ7CaUbGgCmho=",
+			"path": "github.com/markbates/goth/providers/yammer",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "PBLktr9vtfP/AUl0t8iUcp76agc=",
+			"origin": "github.com/kataras/iris/vendor/github.com/microcosm-cc/bluemonday",
+			"path": "github.com/microcosm-cc/bluemonday",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "+DqLvQub57xI+E6+WEK++YdKYYE=",
+			"origin": "github.com/markbates/goth/vendor/github.com/mrjones/oauth",
+			"path": "github.com/mrjones/oauth",
+			"revision": "7baf2846bd1bb02b304453acfdc0e02a9706ffd3",
+			"revisionTime": "2019-01-31T22:34:56Z"
+		},
+		{
+			"checksumSHA1": "1IGPikI02trOziGUNZ1wUThdgsI=",
+			"origin": "github.com/kataras/iris/middleware/logger/vendor/github.com/ryanuber/columnize",
+			"path": "github.com/ryanuber/columnize",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "R2j9LsIPnCBu/y2hPSTZWeViD78=",
+			"origin": "github.com/kataras/iris/vendor/github.com/shurcooL/sanitized_anchor_name",
+			"path": "github.com/shurcooL/sanitized_anchor_name",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "xphs2fkaI+5WE0B3rrr4PjMu7ds=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/crypto/acme",
+			"path": "golang.org/x/crypto/acme",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "4WMs5SAtas3tpxtP8216BKfdNcc=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/crypto/acme/autocert",
+			"path": "golang.org/x/crypto/acme/autocert",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "QYTln4bz2QPw7RmVMAZplZotTas=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/net/html",
+			"path": "golang.org/x/net/html",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "Y5sLiAMj61d4Tmc6qz7SvGfSxnk=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/net/html/atom",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "poTGrQGq2gwbZj1/dDJ8rB+SMyo=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/net/publicsuffix",
+			"path": "golang.org/x/net/publicsuffix",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "htiGKNYcNulmfxuNhzAWgERgxjs=",
+			"origin": "github.com/kataras/iris/vendor/gopkg.in/yaml.v2",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
+			"revisionTime": "2019-02-22T02:24:01Z"
+		}
+	],
+	"rootPath": "GoodJob"
+}
