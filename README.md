@@ -77,3 +77,10 @@ GoWorkSpace     // GoWorkSpace为GOPATH目录
 
 > 注意不要把src目录和java项目的src目录混淆，误认为GoWorkSpace就是具体项目的根目录。
 >idea开发工具open项目选择myApp目录，非GoWorkSpace目录
+
+
+#### 项目运行
+```
+go get -u -v github.com/kardianos/govendor
+```
+
