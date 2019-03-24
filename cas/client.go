@@ -128,9 +128,19 @@ type AuthSuccessStruct struct {
 }
 
 type AttributesStruct struct {
-	XMLName    xml.Name `xml:"attributes"`
-	UserMobile string   `xml:"UserMobile"`
-	UserName   string   `xml:"UserName"`
+	XMLName       xml.Name `xml:"attributes"`
+	UserMobile    string   `xml:"UserMobile"`
+	UserName      string   `xml:"UserName"`
+	UserTitle     string   `xml:"UserTitle`
+	DeptFullName  string   `xml:"DeptFullName`
+	UserNum       string   `xml:"UserNum`
+	UserNameHex   string   `xml:"UserNameHex`
+	OfficeAddress string   `xml:"OfficeAddress`
+	UserEmail     string   `xml:"UserEmail`
+	ACCOUNT       string   `xml:"ACCOUNT`
+	UserBelong    int8     `xml:"UserBelong`
+	UserId        int16    `xml:"UserId`
+	DeptName      string   `xml:"DeptName`
 }
 
 // validateTicket performs CAS ticket validation with the given ticket and service.
@@ -146,33 +156,6 @@ func (c *Client) validateTicket(ticket string, ctx iris.Context) error {
 	q.Add("service", c.config.ServerName)
 	u.RawQuery = q.Encode()
 	user, err := GetResponseBody(u.String())
-	/*
-		<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
-			<cas:authenticationSuccess>
-				<cas:user>P00066553</cas:user>
-				<cas:attributes>
-					<cas:UserMobile>13763323998</cas:UserMobile>
-					<cas:UserTitle>(Unknown)</cas:UserTitle>
-					<cas:UserName>钟震龙</cas:UserName>
-					<cas:isFromNewLogin>false</cas:isFromNewLogin>
-					<cas:DeptFullName>(Unknown)</cas:DeptFullName>
-					<cas:authenticationDate>2019-03-24T15:50:41.624+08:00[PRC]</cas:authenticationDate>
-					<cas:successfulAuthenticationHandlers>QueryDatabaseAuthenticationHandler</cas:successfulAuthenticationHandlers>
-					<cas:UserNum>P00066553</cas:UserNum>
-					<cas:UserNameHex>%E9%92%9F%E9%9C%87%E9%BE%99</cas:UserNameHex>
-					<cas:OfficeAddress>(Unknown)</cas:OfficeAddress>
-					<cas:UserEmail>(Unknown)</cas:UserEmail>
-					<cas:ACCOUNT>zhenlong.zhong</cas:ACCOUNT>
-					<cas:UserBelong>1</cas:UserBelong>
-					<cas:authenticationMethod>QueryDatabaseAuthenticationHandler</cas:authenticationMethod>
-					<cas:UserId>43262</cas:UserId>
-					<cas:longTermAuthenticationRequestTokenUsed>false</cas:longTermAuthenticationRequestTokenUsed>
-					<cas:DeptName>(Unknown)</cas:DeptName>
-				</cas:attributes>
-			</cas:authenticationSuccess>
-		</cas:serviceResponse>
-	*/
-
 	r := Response{}
 	xml.Unmarshal([]byte(user), &r)
 	session := c.sessionsManager.Start(ctx)
