@@ -1,12 +1,21 @@
 package main
 
 import (
-	"GoodJob/cas"
+	"GoodJob/config"
+	"GoodJob/db"
+	"GoodJob/services/rbac"
+	"GoodJob/web/middleware"
+	"GoodJob/web/routes"
+	"GoodJob/web/structs"
+	"github.com/casbin/casbin"
 	"github.com/gorilla/securecookie" // optionally, used for session's encoder/decoder
+	cm "github.com/iris-contrib/middleware/casbin"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/middleware/recover"
+	"github.com/kataras/iris/hero"
+	"github.com/kataras/iris/middleware/i18n"
 	"github.com/kataras/iris/sessions"
+	"runtime"
+	"time"
 )
 
 var sessionsManager *sessions.Sessions
@@ -21,26 +30,51 @@ func init() {
 	secureCookie := securecookie.New(hashKey, blockKey)
 
 	sessionsManager = sessions.New(sessions.Config{
-		Cookie: cookieName,
-		Encode: secureCookie.Encode,
-		Decode: secureCookie.Decode,
+		Cookie:  cookieName,
+		Encode:  secureCookie.Encode,
+		Decode:  secureCookie.Decode,
+		Expires: time.Duration(30) * time.Minute,
 	})
 }
 
 func main() {
+	// Set the concurrency level
+	runtime.GOMAXPROCS(4 * runtime.NumCPU())
 
-	// create our app,
-	// set a view
-	// set sessions
-	// and setup the router for the showcase
-	app := iris.New()
+	app := iris.Default()
 
-	// 可以从任何http相关的恐慌中恢复
-	// 并将请求记录到终端。
-	app.Use(recover.New())
-	goodJobLogger := logger.New()
-	app.Use(goodJobLogger)
-	app.Use(cas.New(cas.Config{"http://localhost:7007/uuc/login", "http://localhost:3000/a", "http://localhost:7007/uuc"}, sessionsManager))
+	//app.Logger().AddOutput(f) 指定输出到文件
+	app.Logger().SetLevel("debug")
+
+	// close connection when control+C/cmd+C
+	iris.RegisterOnInterrupt(func() {
+		mysql.DB.Close()
+	})
+
+	app.Use(cas.New(func(ctx iris.Context) bool {
+		session := sessionsManager.Start(ctx)
+		return session.Get("user") == nil
+	}, func(ctx iris.Context, u interface{}) {
+		if u != nil {
+			session := sessionsManager.Start(ctx)
+			session.Set("user", u)
+		}
+	}))
+
+	globalLocale := i18n.New(i18n.Config{
+		Default:      "zh-CN",
+		URLParameter: "lang",
+		Languages: map[string]string{
+			"en-US": "./locales/locale_en-US.ini",
+			"zh-CN": "./locales/locale_zh-CN.ini"}})
+	app.Use(globalLocale)
+
+	enforcer := casbin.NewEnforcer("./config/casbinmodel.conf", "casbinpolicy.csv")
+	enforcer.EnableLog(true)
+	casbinMiddleware := cm.New(enforcer)
+	app.Use(casbinMiddleware.ServeHTTP)
+	app.WrapRouter(casbinMiddleware.Wrapper())
+
 	//将“before”处理程序注册为将要执行的第一个处理程序
 	//在所有域的路由上。
 	//或使用`UseGlobal`注册一个将跨子域触发的中间件。
@@ -50,20 +84,26 @@ func main() {
 	//在所有域的路由'处理程序之后。
 	//app.Done(after)
 
-	app.OnErrorCode(404, goodJobLogger, func(ctx iris.Context) {
-		ctx.Writef("My Custom 404 error page ")
-	})
-
 	// or catch all http errors:
-	app.OnAnyErrorCode(goodJobLogger, func(ctx iris.Context) {
-		// this should be added to the logs, at the end because of the `logger.Config#MessageContextKey`
-		ctx.Values().Set("logger_message", "a dynamic message passed to the logs")
-		ctx.Writef("My Custom error page")
+	app.OnAnyErrorCode(func(ctx iris.Context) {
+		ctx.JSON(structs.ResponseBasic{
+			Code:    ctx.GetStatusCode(),
+			Message: i18n.Translate(ctx, "error")})
+	})
+	app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
+		ctx.JSON(structs.ResponseBasic{
+			Code:    ctx.GetStatusCode(),
+			Message: i18n.Translate(ctx, "404")})
 	})
 
-	app.Get("/a", func(ctx iris.Context) {
-		ctx.HTML("<b>Hello!</b>")
+	app.Favicon("./assets/logo_24.ico")
+
+	hero.Register(user.NewUserService())
+	app.PartyFunc("/user", func(r iris.Party) {
+		r.Get("/{id:int}", hero.Handler(routes.Get))
 	})
-	// http://localhost:3000
-	app.Run(iris.Addr("localhost:3000"), iris.WithConfiguration(iris.YAML("./config/iris.yml")))
+
+	app.Run(iris.Addr(*config.Global.Host+":"+*config.Global.Port), iris.WithConfiguration(iris.YAML("./config/iris.yml")))
+	//app.Run(iris.AutoTLS(":443", "example.com", "admin@example.com"))
+
 }

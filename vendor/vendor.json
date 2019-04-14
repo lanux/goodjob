@@ -17,6 +17,12 @@
 			"revisionTime": "2019-02-22T02:24:01Z"
 		},
 		{
+			"checksumSHA1": "XRH9UcCo34OZ0TARtNCsGJq0CM8=",
+			"path": "github.com/Knetic/govaluate",
+			"revision": "9aa49832a739dcd78a5542ff189fb82c3e423116",
+			"revisionTime": "2017-10-22T00:36:10Z"
+		},
+		{
 			"checksumSHA1": "bJZ7ydtD+djI8fIJ5zlVlNNXsp4=",
 			"origin": "github.com/kataras/iris/vendor/github.com/Shopify/goreferrer",
 			"path": "github.com/Shopify/goreferrer",
@@ -52,6 +58,66 @@
 			"revisionTime": "2019-02-22T02:24:01Z"
 		},
 		{
+			"checksumSHA1": "GX52cOGd115i21QYCOuGZwB+VW8=",
+			"path": "github.com/casbin/casbin",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "dOAqYmfju82qrlRUB2UJYqWM+F0=",
+			"path": "github.com/casbin/casbin/config",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "ZiYfKeZDLHFodcZ5h8mvWLi2jbw=",
+			"path": "github.com/casbin/casbin/effect",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "SMYDqpPv0trYaNkuilcq0bPvEdk=",
+			"path": "github.com/casbin/casbin/log",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "x6WGFX+QhUPsYA15jbwrSoRDddQ=",
+			"path": "github.com/casbin/casbin/model",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "f6Sp1gFsSFUnRFXnBgJOMhF6Urw=",
+			"path": "github.com/casbin/casbin/persist",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "hmRfuONiGq+upKDtS6+zor3kTkE=",
+			"path": "github.com/casbin/casbin/persist/file-adapter",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "HPYdTQ8rMNMZGD+J61hKD0qtycQ=",
+			"path": "github.com/casbin/casbin/rbac",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "VH2ZNNaIu1s4OiWSC9Vl2mlAz6M=",
+			"path": "github.com/casbin/casbin/rbac/default-role-manager",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
+			"checksumSHA1": "6blfr3ZtjS8UPE2t2e6BO49CcgM=",
+			"path": "github.com/casbin/casbin/util",
+			"revision": "c87db9db0776611569908fbc589656e8ab5fb123",
+			"revisionTime": "2019-03-27T15:34:08Z"
+		},
+		{
 			"checksumSHA1": "BEx8gHR3cYCuy6wQRWGiAuJYjmE=",
 			"origin": "github.com/kataras/iris/vendor/github.com/eknkc/amber",
 			"path": "github.com/eknkc/amber",
@@ -78,6 +144,13 @@
 			"path": "github.com/flosch/pongo2",
 			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
 			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "Xb6hzwzvURpUZqPK/wyISvIN5KM=",
+			"origin": "github.com/jinzhu/gorm/vendor/github.com/go-sql-driver/mysql",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "8b07437717e71c2ff00602ae19f8353ba10aafbb",
+			"revisionTime": "2019-03-10T12:17:21Z"
 		},
 		{
 			"checksumSHA1": "tf+bn/G8sfZq35Bv0ulW/4tbRsE=",
@@ -107,6 +180,37 @@
 			"revisionTime": "2019-02-22T02:24:01Z"
 		},
 		{
+			"checksumSHA1": "qk4QDTJjq9m6rSIHnkDRRyChmRE=",
+			"origin": "github.com/kataras/iris/middleware/i18n/vendor/github.com/iris-contrib/i18n",
+			"path": "github.com/iris-contrib/i18n",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "LnDn4RNcJJcOIPqz65zYT41g4Mk=",
+			"path": "github.com/iris-contrib/middleware/casbin",
+			"revision": "8bd5d51b3c2e8ea5ed91036b42ea8b884b597ef8",
+			"revisionTime": "2018-10-21T16:27:28Z"
+		},
+		{
+			"checksumSHA1": "mNJq17mONQsTfEIjjTc6pnbUYRs=",
+			"path": "github.com/jinzhu/gorm",
+			"revision": "8b07437717e71c2ff00602ae19f8353ba10aafbb",
+			"revisionTime": "2019-03-10T12:17:21Z"
+		},
+		{
+			"checksumSHA1": "w5/naAzcG0+g6aYx63/of1Wbgqw=",
+			"path": "github.com/jinzhu/gorm/dialects/mysql",
+			"revision": "8b07437717e71c2ff00602ae19f8353ba10aafbb",
+			"revisionTime": "2019-03-10T12:17:21Z"
+		},
+		{
+			"checksumSHA1": "mfb/EusMwfajCPq0lwLWM/pvqI4=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": "04140366298a54a039076d798123ffa108fff46c",
+			"revisionTime": "2018-03-08T03:36:59Z"
+		},
+		{
 			"checksumSHA1": "evTDqzzcWb15rxk/g83kkcs5vmM=",
 			"origin": "github.com/kataras/iris/vendor/github.com/json-iterator/go",
 			"path": "github.com/json-iterator/go",
@@ -131,6 +235,30 @@
 			"path": "github.com/kataras/iris",
 			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
 			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "ZKgR6qX+S8slw9yGJvLhUWZ2RIk=",
+			"path": "github.com/kataras/iris/_examples/hero/overview/datamodels",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "+W/WTcUiF5KKiI2xT0+DeU/nnZw=",
+			"path": "github.com/kataras/iris/_examples/hero/overview/repositories",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "7jqvaPE3A97EIR4O273hwNB0Wvw=",
+			"path": "github.com/kataras/iris/_examples/hero/overview/services",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "k1eSngZqaslRI9gab62oJNDYxgU=",
+			"path": "github.com/kataras/iris/_examples/hero/overview/web/routes",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
 		},
 		{
 			"checksumSHA1": "Bm0qvlIK4oSun+6c9HUAx6J4AFk=",
@@ -217,6 +345,18 @@
 			"revisionTime": "2019-02-22T02:24:01Z"
 		},
 		{
+			"checksumSHA1": "erT3Bx6ceXOkN1TgBYf6JQdF7Hg=",
+			"path": "github.com/kataras/iris/hero",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "FtWT+qh4aJPz/0d1EkeL8uWqKsI=",
+			"path": "github.com/kataras/iris/hero/di",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
 			"checksumSHA1": "96on8LIceHPPtumVocy9mHmLh0I=",
 			"path": "github.com/kataras/iris/macro",
 			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
@@ -251,6 +391,12 @@
 			"path": "github.com/kataras/iris/macro/interpreter/token",
 			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
 			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "K43KUhk751hMHL5N4eJ4iiQb9dI=",
+			"path": "github.com/kataras/iris/middleware/i18n",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
 		},
 		{
 			"checksumSHA1": "eE1iIm7aeJAyhgWBMVILvhIkRPE=",
@@ -581,6 +727,12 @@
 			"revisionTime": "2019-02-22T02:24:01Z"
 		},
 		{
+			"checksumSHA1": "aFpql3G+Nw8zkzfqLWQJNZC8pu0=",
+			"path": "golang.org/x/net/context/ctxhttp",
+			"revision": "addf6b3196f61cd44ce5a76657913698c73479d0",
+			"revisionTime": "2019-03-22T03:00:09Z"
+		},
+		{
 			"checksumSHA1": "QYTln4bz2QPw7RmVMAZplZotTas=",
 			"origin": "github.com/kataras/iris/vendor/golang.org/x/net/html",
 			"path": "golang.org/x/net/html",
@@ -600,6 +752,32 @@
 			"path": "golang.org/x/net/publicsuffix",
 			"revision": "f00af59c0177908d9bf7b4cf97ef89b29bfd21b6",
 			"revisionTime": "2019-02-22T02:24:01Z"
+		},
+		{
+			"checksumSHA1": "8R4xjqA3dWZWFx0Jvq8in56O62k=",
+			"path": "golang.org/x/oauth2",
+			"revision": "c85d3e98c914e3a33234ad863dcbff5dbc425bb8",
+			"revisionTime": "2019-03-18T00:32:44Z"
+		},
+		{
+			"checksumSHA1": "M/wIld2NO0r0VA16gCntGLaD/SY=",
+			"path": "golang.org/x/oauth2/internal",
+			"revision": "c85d3e98c914e3a33234ad863dcbff5dbc425bb8",
+			"revisionTime": "2019-03-18T00:32:44Z"
+		},
+		{
+			"checksumSHA1": "qRxRVwz0diafKedhdT1bAMzMTu8=",
+			"origin": "github.com/kataras/iris/vendor/golang.org/x/sys/unix",
+			"path": "golang.org/x/sys/unix",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
+		},
+		{
+			"checksumSHA1": "wn1VXOX2rXBl0YkdBrn88bJCWW8=",
+			"origin": "github.com/kataras/iris/vendor/gopkg.in/ini.v1",
+			"path": "gopkg.in/ini.v1",
+			"revision": "5c6b23c079813bdd93130ecf6cde0cc4c7ac4909",
+			"revisionTime": "2019-04-10T11:57:58Z"
 		},
 		{
 			"checksumSHA1": "htiGKNYcNulmfxuNhzAWgERgxjs=",

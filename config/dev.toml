@@ -1,0 +1,18 @@
+# This is a TOML document.
+
+server_host = "0.0.0.0"
+server_port = "8080"
+
+[cas]
+cas_server_login_url="http://127.0.0.1:2280/uuc/login"
+service_url="http://127.0.0.1:8080/"
+cas_server_url_prefix="http://127.0.0.1:2280/uuc"
+
+
+[mysql]
+url="127.0.0.1:3306/good_job?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+username="root"
+password="root"
+maxOpenConns=20
+connMaxLifetime=60000
+maxIdle=15

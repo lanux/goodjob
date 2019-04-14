@@ -1,13 +1,13 @@
 package cas
 
 import (
+	"GoodJob/config"
 	"crypto/tls"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/context"
-	"github.com/kataras/iris/sessions"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -24,32 +24,24 @@ var (
 )
 
 type Client struct {
-	config          Config
-	tickets         string ""
-	sessionsManager *sessions.Sessions
-	Handler         context.Handler
+	// 认证前执行的方法，返回false结束认证操作
+	preAuthentication func(ctx iris.Context) bool
+	// 认证后处理方法
+	postAuthentication func(ctx iris.Context, u interface{})
 }
 
-type Config struct {
-	CasServerLoginUrl  string `desc:"CAS Login url"`
-	ServerName         string `desc:"project service url"`
-	CasServerUrlPrefix string `desc:"CAS url prefix"`
-}
-
-func New(cfg Config, sessionsManager *sessions.Sessions) context.Handler {
+func New(preAuthentication func(ctx iris.Context) bool, postAuthentication func(ctx iris.Context, u interface{})) context.Handler {
 	c := &Client{
-		config:          cfg.Validate(),
-		tickets:         "",
-		sessionsManager: sessionsManager,
+		preAuthentication:  preAuthentication,
+		postAuthentication: postAuthentication,
 	}
 	return c.Authentication
 }
 
 func (c *Client) Authentication(ctx iris.Context) {
 	tk := ctx.URLParam("ticket")
-	session := c.sessionsManager.Start(ctx)
-	user := session.Get("user")
-	if user != nil {
+	if c.preAuthentication != nil && !c.preAuthentication(ctx) {
+		ctx.Next()
 		return
 	}
 	if len(tk) <= 0 {
@@ -57,6 +49,7 @@ func (c *Client) Authentication(ctx iris.Context) {
 	} else {
 		c.validateTicket(tk, ctx)
 	}
+	ctx.Next()
 }
 
 func GetResponseBody(url string) (string, error) {
@@ -82,35 +75,25 @@ func httpClient() *http.Client {
 	return &http.Client{Transport: transport}
 }
 
-func (c Config) Validate() Config {
-	if c.CasServerLoginUrl == "" {
-		if c.CasServerUrlPrefix == "" {
-			panic(c)
-		}
-		c.CasServerLoginUrl = c.CasServerUrlPrefix + LoginPath
-	}
-	return c
-}
-
 func (c *Client) RedirectToLogout(ctx iris.Context) {
-	u, err := url.Parse(c.config.CasServerUrlPrefix + LogoutPath)
+	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + LogoutPath)
 	if err != nil {
 		panic(err)
 	}
 	q := u.Query()
-	q.Add("service", c.config.ServerName)
+	q.Add("service", config.Global.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	ctx.Redirect(u.String(), http.StatusFound)
 }
 
 // RedirectToLogout replies to the request with a redirect URL to authenticate with CAS.
 func (c *Client) RedirectToLogin(ctx iris.Context) {
-	u, err := url.Parse(c.config.CasServerLoginUrl)
+	u, err := url.Parse(config.Global.Cas.CasServerLoginUrl)
 	if err != nil {
 		panic(err)
 	}
 	q := u.Query()
-	q.Add("service", c.config.ServerName)
+	q.Add("service", config.Global.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	ctx.Redirect(u.String(), http.StatusFound)
 }
@@ -147,18 +130,19 @@ type AttributesStruct struct {
 //
 // If the request returns a 404 then validateTicketCas1 will be returned.
 func (c *Client) validateTicket(ticket string, ctx iris.Context) error {
-	u, err := url.Parse(c.config.CasServerUrlPrefix + ValidatePath)
+	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + ValidatePath)
 	if err != nil {
 		panic(err)
 	}
 	q := u.Query()
 	q.Add("ticket", ticket)
-	q.Add("service", c.config.ServerName)
+	q.Add("service", config.Global.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	user, err := GetResponseBody(u.String())
-	r := Response{}
+	r := &Response{}
 	xml.Unmarshal([]byte(user), &r)
-	session := c.sessionsManager.Start(ctx)
-	session.Set("user", r)
+	if c.postAuthentication != nil {
+		c.postAuthentication(ctx, r)
+	}
 	return nil
 }
