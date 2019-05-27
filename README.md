@@ -136,3 +136,22 @@ govendor fetch golang.org/x/net/context
 # 从线上远端库添加或更新标签或分支等于v1的依赖包
 govendor fetch golang.org/x/net/context@=v1
 ```
+
+
+```shell
+docker run --name mysql-8.0 \
+-e MYSQL_ROOT_PASSWORD=root \
+-p 3308:3306 \
+-v /apps/data/mysql/conf-8.0:/etc/mysql/conf.d \
+-v /apps/data/mysql/data-8.0:/var/lib/mysql -d mysql:8.0 \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci
+
+
+alter user'root'@'%' IDENTIFIED BY 'root'; 
+flush privileges;
+
+ALTER USER 'root'@'%' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER; 
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+```
