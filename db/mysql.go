@@ -1,4 +1,4 @@
-package mysql
+package db
 
 import (
 	"fmt"
@@ -9,11 +9,11 @@ import (
 )
 
 var (
-	DB *gorm.DB
+	MYSQL *gorm.DB
 )
 
 func init() {
-	DB = new()
+	MYSQL = new()
 }
 
 func new() *gorm.DB {

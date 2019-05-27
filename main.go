@@ -48,7 +48,7 @@ func main() {
 
 	// close connection when control+C/cmd+C
 	iris.RegisterOnInterrupt(func() {
-		mysql.DB.Close()
+		db.MYSQL.Close()
 	})
 
 	app.Use(cas.New(func(ctx iris.Context) bool {

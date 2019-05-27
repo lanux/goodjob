@@ -30,7 +30,7 @@ type userDbRepository struct {
 func (*userDbRepository) GetById(id int) (User, bool) {
 	user := new(User)
 	user.Id = id
-	if err := mysql.DB.Preload("Role").First(user).Error; err != nil {
+	if err := db.MYSQL.Preload("Role").First(user).Error; err != nil {
 		fmt.Printf("GetUserByIdErr:%s", err)
 	}
 	return *user, true
@@ -39,7 +39,7 @@ func (*userDbRepository) GetById(id int) (User, bool) {
 func (*userDbRepository) DeleteById(id int) bool {
 	u := new(User)
 	u.Id = id
-	if err := mysql.DB.Delete(u).Error; err != nil {
+	if err := db.MYSQL.Delete(u).Error; err != nil {
 		fmt.Printf("DeleteUserByIdErr:%s", err)
 	}
 	return true
