@@ -1,12 +1,6 @@
 package main
 
 import (
-	"GoodJob/config"
-	"GoodJob/db"
-	"GoodJob/services/rbac"
-	"GoodJob/web/middleware"
-	"GoodJob/web/routes"
-	"GoodJob/web/structs"
 	"github.com/casbin/casbin"
 	"github.com/gorilla/securecookie" // optionally, used for session's encoder/decoder
 	cm "github.com/iris-contrib/middleware/casbin"
@@ -14,6 +8,12 @@ import (
 	"github.com/kataras/iris/hero"
 	"github.com/kataras/iris/middleware/i18n"
 	"github.com/kataras/iris/sessions"
+	"goodjob/config"
+	"goodjob/db"
+	"goodjob/services/rbac"
+	"goodjob/web/middleware"
+	"goodjob/web/routes"
+	"goodjob/web/structs"
 	"runtime"
 	"time"
 )

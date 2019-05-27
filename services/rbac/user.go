@@ -1,6 +1,6 @@
 package user
 
-import "GoodJob/repositories/rbac"
+import "goodjob/repositories/rbac"
 
 type UserService interface {
 	GetById(id int) (user.User, bool)

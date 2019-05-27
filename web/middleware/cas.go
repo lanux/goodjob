@@ -1,13 +1,13 @@
 package cas
 
 import (
-	"GoodJob/config"
 	"crypto/tls"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/context"
+	"goodjob/config"
 	"io/ioutil"
 	"net/http"
 	"net/url"

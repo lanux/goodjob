@@ -1,8 +1,8 @@
 package routes
 
 import (
-	user2 "GoodJob/repositories/rbac"
-	user "GoodJob/services/rbac"
+	user2 "goodjob/repositories/rbac"
+	user "goodjob/services/rbac"
 )
 
 func Get(service user.UserService, id int) (results user2.User) {

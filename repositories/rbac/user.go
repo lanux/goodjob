@@ -1,9 +1,9 @@
 package user
 
 import (
-	"GoodJob/db"
 	"fmt"
 	"github.com/jinzhu/gorm"
+	"goodjob/db"
 )
 
 type User struct {
