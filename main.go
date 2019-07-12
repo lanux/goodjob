@@ -1,19 +1,15 @@
 package main
 
 import (
-	"github.com/casbin/casbin"
 	"github.com/gorilla/securecookie" // optionally, used for session's encoder/decoder
-	cm "github.com/iris-contrib/middleware/casbin"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/hero"
 	"github.com/kataras/iris/middleware/i18n"
 	"github.com/kataras/iris/sessions"
-	"goodjob/config"
-	"goodjob/db"
-	"goodjob/services/rbac"
-	"goodjob/web/middleware"
-	"goodjob/web/routes"
-	"goodjob/web/structs"
+	"github.com/lanux/goodjob/v1/config"
+	"github.com/lanux/goodjob/v1/db"
+	"github.com/lanux/goodjob/v1/web"
+	"github.com/lanux/goodjob/v1/web/handler"
+	"github.com/lanux/goodjob/v1/web/middleware/cas"
 	"runtime"
 	"time"
 )
@@ -48,18 +44,12 @@ func main() {
 
 	// close connection when control+C/cmd+C
 	iris.RegisterOnInterrupt(func() {
-		db.MYSQL.Close()
+		db.Instance().Close()
 	})
 
-	app.Use(cas.New(func(ctx iris.Context) bool {
-		session := sessionsManager.Start(ctx)
-		return session.Get("user") == nil
-	}, func(ctx iris.Context, u interface{}) {
-		if u != nil {
-			session := sessionsManager.Start(ctx)
-			session.Set("user", u)
-		}
-	}))
+	cas.InitCas(app, &cas.DefaultInterceptor{S: sessionsManager})
+
+	//auth.InitCasbin(app, sessionsManager)
 
 	globalLocale := i18n.New(i18n.Config{
 		Default:      "zh-CN",
@@ -68,12 +58,6 @@ func main() {
 			"en-US": "./locales/locale_en-US.ini",
 			"zh-CN": "./locales/locale_zh-CN.ini"}})
 	app.Use(globalLocale)
-
-	enforcer := casbin.NewEnforcer("./config/casbinmodel.conf", "casbinpolicy.csv")
-	enforcer.EnableLog(true)
-	casbinMiddleware := cm.New(enforcer)
-	app.Use(casbinMiddleware.ServeHTTP)
-	app.WrapRouter(casbinMiddleware.Wrapper())
 
 	//将“before”处理程序注册为将要执行的第一个处理程序
 	//在所有域的路由上。
@@ -86,24 +70,16 @@ func main() {
 
 	// or catch all http errors:
 	app.OnAnyErrorCode(func(ctx iris.Context) {
-		ctx.JSON(structs.ResponseBasic{
-			Code:    ctx.GetStatusCode(),
-			Message: i18n.Translate(ctx, "error")})
+		ctx.JSON(handler.ErrorWithLocale(ctx.GetStatusCode(), "error", ctx))
 	})
 	app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
-		ctx.JSON(structs.ResponseBasic{
-			Code:    ctx.GetStatusCode(),
-			Message: i18n.Translate(ctx, "404")})
+		ctx.JSON(handler.ErrorWithLocale(ctx.GetStatusCode(), "404", ctx))
 	})
 
 	app.Favicon("./assets/logo_24.ico")
 
-	hero.Register(user.NewUserService())
-	app.PartyFunc("/user", func(r iris.Party) {
-		r.Get("/{id:int}", hero.Handler(routes.Get))
-	})
+	web.InitParty(app, sessionsManager)
 
-	app.Run(iris.Addr(*config.Global.Host+":"+*config.Global.Port), iris.WithConfiguration(iris.YAML("./config/iris.yml")))
+	app.Run(iris.Addr(config.Global.Host+":"+config.Global.Port), iris.WithConfiguration(iris.YAML("./config/iris.yml")))
 	//app.Run(iris.AutoTLS(":443", "example.com", "admin@example.com"))
-
 }

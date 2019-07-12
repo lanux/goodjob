@@ -3,7 +3,7 @@ package user
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"goodjob/db"
+	"github.com/lanux/goodjob/v1/db"
 )
 
 type User struct {
@@ -15,31 +15,25 @@ type User struct {
 	RoleID   uint
 }
 
-type UserRepository interface {
-	GetById(id int) (User, bool)
-	DeleteById(id int) bool
+func Create(user *User) bool {
+	ok := db.Instance().NewRecord(user)
+	fmt.Printf("create user %s", ok)
+	return ok
 }
 
-func NewUserRepository() UserRepository {
-	return &userDbRepository{}
-}
-
-type userDbRepository struct {
-}
-
-func (*userDbRepository) GetById(id int) (User, bool) {
+func GetById(id int) (User, bool) {
 	user := new(User)
 	user.Id = id
-	if err := db.MYSQL.Preload("Role").First(user).Error; err != nil {
+	if err := db.Instance().Preload("id").First(user).Error; err != nil {
 		fmt.Printf("GetUserByIdErr:%s", err)
 	}
 	return *user, true
 }
 
-func (*userDbRepository) DeleteById(id int) bool {
+func DeleteById(id int) bool {
 	u := new(User)
 	u.Id = id
-	if err := db.MYSQL.Delete(u).Error; err != nil {
+	if err := db.Instance().Delete(u).Error; err != nil {
 		fmt.Printf("DeleteUserByIdErr:%s", err)
 	}
 	return true

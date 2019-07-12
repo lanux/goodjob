@@ -155,3 +155,30 @@ ALTER USER 'root'@'%' IDENTIFIED BY 'root' PASSWORD EXPIRE NEVER;
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 FLUSH PRIVILEGES;
 ```
+
+
+### 设置本地环境
+
+```
+set GO111MODULE=on
+go mod tidy
+```
+
+### 打包可执行程序
+
+（一）Windows 下编译Linux 64位可执行程序：
+```
+    SET CGO_ENABLED=0  //不设置也可以，原因不明
+    SET GOOS=linux
+    SET GOARCH=amd64
+    通过 go env 查看设置是否成功。
+```
+
+（二）Linux 下编译Windows可执行程序：
+```
+    export CGO_ENABLED=0
+    export GOOS=windows
+    export GOARCH=amd64
+    通过 go env 查看设置是否成功。
+    go build hello.go
+```

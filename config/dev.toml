@@ -5,12 +5,12 @@ server_port = "8080"
 
 [cas]
 cas_server_login_url="http://127.0.0.1:2280/uuc/login"
-service_url="http://127.0.0.1:8080/"
+service_url="http://127.0.0.1:8080"
 cas_server_url_prefix="http://127.0.0.1:2280/uuc"
 
 
 [mysql]
-url="127.0.0.1:3306/good_job?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+url="127.0.0.1:3308"
 username="root"
 password="root"
 maxOpenConns=20

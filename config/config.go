@@ -12,10 +12,10 @@ import (
 var Global *appConfig
 
 type appConfig struct {
-	Host  *string      `toml:"server_host"`
-	Port  *string      `toml:"server_port"`
-	Cas   *casConfig   `toml:"cas"`
-	Mysql *mysqlConfig `toml:"mysql"`
+	Host  string      `toml:"server_host"`
+	Port  string      `toml:"server_port"`
+	Cas   casConfig   `toml:"cas"`
+	Mysql mysqlConfig `toml:"mysql"`
 }
 
 type casConfig struct {
@@ -57,10 +57,6 @@ func validate() {
 	if Global == nil {
 		panic(errors.New("config load error"))
 	}
-	if Global.Cas == nil {
-		panic(errors.New("cas config load error"))
-	}
-
 }
 
 func loadConfig() (*appConfig, error) {

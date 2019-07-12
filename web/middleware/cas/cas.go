@@ -1,13 +1,13 @@
 package cas
 
 import (
-	"crypto/tls"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"github.com/kataras/iris"
-	"github.com/kataras/iris/context"
-	"goodjob/config"
+	"github.com/lanux/goodjob/v1/common/consts"
+	"github.com/lanux/goodjob/v1/common/logger"
+	"github.com/lanux/goodjob/v1/config"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -19,47 +19,48 @@ const (
 	ValidatePath = "/serviceValidate"
 )
 
-var (
-	client *Client
-)
+var C *Client
 
-type Client struct {
-	// 认证前执行的方法，返回false结束认证操作
-	preAuthentication func(ctx iris.Context) bool
-	// 认证后处理方法
-	postAuthentication func(ctx iris.Context, u interface{})
+func InitCas(app *iris.Application, i Interceptor) {
+	C = &Client{i}
+	app.Use(C.Authentication)
 }
 
-func New(preAuthentication func(ctx iris.Context) bool, postAuthentication func(ctx iris.Context, u interface{})) context.Handler {
-	c := &Client{
-		preAuthentication:  preAuthentication,
-		postAuthentication: postAuthentication,
-	}
-	return c.Authentication
+type Client struct {
+	i Interceptor
 }
 
 func (c *Client) Authentication(ctx iris.Context) {
-	tk := ctx.URLParam("ticket")
-	if c.preAuthentication != nil && !c.preAuthentication(ctx) {
+	if c.i != nil && c.i.PreAuthentication(ctx) {
 		ctx.Next()
 		return
 	}
+	tk := ctx.URLParam(consts.CAS_TICKET)
 	if len(tk) <= 0 {
-		c.RedirectToLogin(ctx)
+		RedirectToLogin(ctx)
+		ctx.StatusCode(http.StatusFound)
+		ctx.StopExecution()
+		return
 	} else {
-		c.validateTicket(tk, ctx)
+		u, err := validateTicket(tk)
+		if err != nil {
+			RedirectToLogin(ctx)
+			ctx.StopExecution()
+			return
+		}
+		if err == nil && c.i != nil {
+			c.i.PostAuthentication(ctx, u.AuthSuccess)
+		}
 	}
 	ctx.Next()
 }
 
 func GetResponseBody(url string) (string, error) {
-	client := httpClient()
-	response, err := client.Get(url)
+	response, err := http.Get(url)
 	if err != nil {
 		return "", err
 	}
-
-	if response.StatusCode != 200 {
+	if response.StatusCode != http.StatusOK {
 		errMsg := fmt.Sprintf("response should be 200 but is: %d", response.StatusCode)
 		return "", errors.New(errMsg)
 	}
@@ -70,30 +71,30 @@ func GetResponseBody(url string) (string, error) {
 	return string(body), nil
 }
 
-func httpClient() *http.Client {
-	transport := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
-	return &http.Client{Transport: transport}
-}
-
 func (c *Client) RedirectToLogout(ctx iris.Context) {
+	if c.i != nil {
+		c.i.BeforeLogout(ctx)
+	}
 	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + LogoutPath)
 	if err != nil {
-		panic(err)
+		logger.Panic()
 	}
 	q := u.Query()
-	q.Add("service", config.Global.Cas.ServerName)
+	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
 	u.RawQuery = q.Encode()
+	ctx.StatusCode(http.StatusFound)
 	ctx.Redirect(u.String(), http.StatusFound)
+	ctx.StopExecution()
 }
 
 // RedirectToLogout replies to the request with a redirect URL to authenticate with CAS.
-func (c *Client) RedirectToLogin(ctx iris.Context) {
+func RedirectToLogin(ctx iris.Context) {
 	u, err := url.Parse(config.Global.Cas.CasServerLoginUrl)
 	if err != nil {
 		panic(err)
 	}
 	q := u.Query()
-	q.Add("service", config.Global.Cas.ServerName)
+	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	ctx.Redirect(u.String(), http.StatusFound)
 }
@@ -129,20 +130,23 @@ type AttributesStruct struct {
 // validateTicket performs CAS ticket validation with the given ticket and service.
 //
 // If the request returns a 404 then validateTicketCas1 will be returned.
-func (c *Client) validateTicket(ticket string, ctx iris.Context) error {
-	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + ValidatePath)
+func validateTicket(ticket string) (*Response, error) {
+	validReq, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + ValidatePath)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	q := u.Query()
-	q.Add("ticket", ticket)
-	q.Add("service", config.Global.Cas.ServerName)
-	u.RawQuery = q.Encode()
-	user, err := GetResponseBody(u.String())
+	q := validReq.Query()
+	q.Add(consts.CAS_TICKET, ticket)
+	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
+	validReq.RawQuery = q.Encode()
+	user, err := GetResponseBody(validReq.String())
+	if err != nil {
+		return nil, err
+	}
 	r := &Response{}
 	xml.Unmarshal([]byte(user), &r)
-	if c.postAuthentication != nil {
-		c.postAuthentication(ctx, r)
+	if r.AuthenticationFailure != "" {
+		return nil, errors.New(r.AuthenticationFailure)
 	}
-	return nil
+	return r, nil
 }
