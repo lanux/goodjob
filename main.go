@@ -9,7 +9,6 @@ import (
 	"github.com/lanux/goodjob/v1/db"
 	"github.com/lanux/goodjob/v1/web"
 	"github.com/lanux/goodjob/v1/web/handler"
-	"github.com/lanux/goodjob/v1/web/middleware/cas"
 	"runtime"
 	"time"
 )
@@ -46,11 +45,6 @@ func main() {
 	iris.RegisterOnInterrupt(func() {
 		db.Instance().Close()
 	})
-
-	cas.InitCas(app, &cas.DefaultInterceptor{S: sessionsManager})
-
-	//auth.InitCasbin(app, sessionsManager)
-
 	globalLocale := i18n.New(i18n.Config{
 		Default:      "zh-CN",
 		URLParameter: "lang",

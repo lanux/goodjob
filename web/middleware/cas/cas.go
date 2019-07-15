@@ -19,11 +19,11 @@ const (
 	ValidatePath = "/serviceValidate"
 )
 
-var C *Client
+var c *Client
 
-func InitCas(app *iris.Application, i Interceptor) {
-	C = &Client{i}
-	app.Use(C.Authentication)
+func New(i Interceptor) *Client {
+	c = &Client{i}
+	return c
 }
 
 type Client struct {
@@ -89,7 +89,7 @@ func (c *Client) RedirectToLogout(ctx iris.Context) {
 
 // RedirectToLogout replies to the request with a redirect URL to authenticate with CAS.
 func RedirectToLogin(ctx iris.Context) {
-	u, err := url.Parse(config.Global.Cas.CasServerLoginUrl)
+	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + LoginPath)
 	if err != nil {
 		panic(err)
 	}

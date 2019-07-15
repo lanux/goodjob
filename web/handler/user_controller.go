@@ -8,7 +8,7 @@ import (
 type UserController struct {
 }
 
-func (*UserController) GetReqMapping() string {
+func (*UserController) RequestMapping() string {
 	return "/user"
 }
 

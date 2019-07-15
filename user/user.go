@@ -2,17 +2,18 @@ package user
 
 import (
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"github.com/lanux/goodjob/v1/db"
 )
 
 type User struct {
-	gorm.Model
-	Id       int    `gorm:"not null int(11)"`
+	Id       int   `gorm:"primary_key"`
 	Name     string `gorm:"not null VARCHAR(191)"`
-	Username string `gorm:"unique;VARCHAR(191)"`
+	Account  string `gorm:"unique;VARCHAR(191)"`
 	Password string `gorm:"not null VARCHAR(191)"`
-	RoleID   uint
+}
+
+func (User) TableName() string {
+	return "sys_user"
 }
 
 func Create(user *User) bool {

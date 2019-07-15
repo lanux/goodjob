@@ -13,12 +13,19 @@ type Interceptor interface {
 }
 
 type DefaultInterceptor struct {
-	S *sessions.Sessions
+	S        *sessions.Sessions
+	Excludes *[]string
+	M        Matcher
 }
 
 // 认证前执行的方法，返回false结束认证操作
 // 返回true 跳过认证
 func (c *DefaultInterceptor) PreAuthentication(ctx iris.Context) bool {
+	if c.M.MatchAny(ctx.Path(), c.Excludes) {
+		ctx.StopExecution()
+		ctx.Skip() // 跳过授权
+		return true
+	}
 	session := c.S.Start(ctx)
 	return session.Get(consts.USER_SESSION_KEY) != nil
 }

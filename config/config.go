@@ -19,9 +19,9 @@ type appConfig struct {
 }
 
 type casConfig struct {
-	CasServerLoginUrl  string `toml:"cas_server_login_url"`
 	ServerName         string `toml:"service_url"`
 	CasServerUrlPrefix string `toml:"cas_server_url_prefix"`
+	Excludes		   string  `toml:"cas_exclude_urls"`
 }
 
 type mysqlConfig struct {

@@ -4,9 +4,9 @@ server_host = "0.0.0.0"
 server_port = "8080"
 
 [cas]
-cas_server_login_url="http://127.0.0.1:2280/uuc/login"
 service_url="http://127.0.0.1:8080"
 cas_server_url_prefix="http://127.0.0.1:2280/uuc"
+cas_exclude_urls="/api/open/*;/api/allow/*;/api/logout"
 
 
 [mysql]
