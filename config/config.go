@@ -9,34 +9,15 @@ import (
 	"path/filepath"
 )
 
-var Global *appConfig
-
-type appConfig struct {
-	Host  string      `toml:"server_host"`
-	Port  string      `toml:"server_port"`
-	Cas   casConfig   `toml:"cas"`
-	Mysql mysqlConfig `toml:"mysql"`
-}
-
-type casConfig struct {
-	ServerName         string `toml:"service_url"`
-	CasServerUrlPrefix string `toml:"cas_server_url_prefix"`
-	Excludes		   string  `toml:"cas_exclude_urls"`
-}
-
-type mysqlConfig struct {
-	Url             string `toml:"url"`
-	Username        string `toml:"username"`
-	Password        string `toml:"password"`
-	MaxOpenConns    int    `toml:"maxOpenConns"`
-	ConnMaxLifetime int64  `toml:"connMaxLifetime"`
-	MaxIdle         int    `toml:"maxIdle"`
-}
-
 var (
 	h          bool
-	profile    string
+	Profile    string
 	configFile string
+	Host       string
+	Port       string
+	Cas        casConfig
+	Mysql      mysqlConfig
+	CasbinFilePath string
 )
 
 // -flag //只支持bool类型
@@ -47,14 +28,19 @@ func init() {
 	flag.BoolVar(&h, "h", false, "show help")
 	flag.BoolVar(&h, "help", false, "show help")
 	flag.StringVar(&configFile, "F", "", "config file")
-	flag.StringVar(&profile, "E", os.Getenv("active.profile"), "environment")
-	flag.StringVar(&profile, "env", os.Getenv("active.profile"), "environment")
-	Global, _ = loadConfig()
-	validate()
+	flag.StringVar(&Profile, "E", os.Getenv("active.Profile"), "environment")
+	flag.StringVar(&Profile, "env", os.Getenv("active.Profile"), "environment")
+	flag.StringVar(&CasbinFilePath, "C", "./config/casbinmodel.conf", "casbin config file")
+	c, _ := loadConfig()
+	validate(c)
+	Host = c.Host
+	Port = c.Port
+	Cas = c.Cas
+	Mysql = c.Mysql
 }
 
-func validate() {
-	if Global == nil {
+func validate(c *appConfig) {
+	if c == nil {
 		panic(errors.New("config load error"))
 	}
 }
@@ -68,10 +54,10 @@ func loadConfig() (*appConfig, error) {
 		os.Exit(0)
 	}
 	if configFile == "" {
-		if profile == "" {
-			profile = "dev"
+		if Profile == "" {
+			Profile = "dev"
 		}
-		configFile = "./config/" + profile + ".toml"
+		configFile = "./config/" + Profile + ".toml"
 	}
 	if _, err := os.Stat(configFile); os.IsNotExist(err) {
 		return nil, errors.New("configuration file '" + configFile + "' does not exist")
@@ -94,4 +80,26 @@ func loadConfig() (*appConfig, error) {
 		return nil, err
 	}
 	return &c, nil
+}
+
+type appConfig struct {
+	Host  string      `toml:"server_host"`
+	Port  string      `toml:"server_port"`
+	Cas   casConfig   `toml:"cas"`
+	Mysql mysqlConfig `toml:"mysql"`
+}
+
+type casConfig struct {
+	ServerName         string `toml:"service_url"`
+	CasServerUrlPrefix string `toml:"server_url_prefix"`
+	Excludes           string `toml:"exclude_urls"`
+}
+
+type mysqlConfig struct {
+	Url             string `toml:"url"`
+	Username        string `toml:"username"`
+	Password        string `toml:"password"`
+	MaxOpenConns    int    `toml:"maxOpenConns"`
+	ConnMaxLifetime int64  `toml:"connMaxLifetime"`
+	MaxIdle         int    `toml:"maxIdle"`
 }

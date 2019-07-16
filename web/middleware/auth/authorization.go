@@ -7,14 +7,15 @@ import (
 	"github.com/kataras/iris/context"
 	"github.com/kataras/iris/sessions"
 	"github.com/lanux/goodjob/v1/common/consts"
+	"github.com/lanux/goodjob/v1/config"
 	"github.com/lanux/goodjob/v1/db"
 	"github.com/lanux/goodjob/v1/web/middleware/cas"
 	"net/http"
 )
 
 func New(ssessions *sessions.Sessions) *Casbin {
-	enforcer := casbin.NewEnforcer("./config/casbinmodel.conf", &Adapter{db.Instance()})
-	enforcer.EnableLog(true)
+	enforcer := casbin.NewEnforcer(config.CasbinFilePath, &Adapter{db.Instance()})
+	enforcer.EnableLog(false)
 	return &Casbin{enforcer: enforcer, s: ssessions}
 }
 
@@ -41,7 +42,7 @@ func (c *Casbin) Check(ctx context.Context) bool {
 	user := userInfo.(cas.AuthSuccessStruct)
 	method := ctx.Method()
 	path := ctx.RequestPath(false)
-	return c.enforcer.Enforce(user.Attributes.ACCOUNT, path, method)
+	return c.enforcer.Enforce(user.User, path, method)
 }
 
 type Adapter struct {

@@ -9,9 +9,11 @@ import (
 
 var instance *zap.SugaredLogger
 
+
 func init() {
 	//Example和Production使用的是json格式输出，Development使用行的形式输出
-	config := zap.NewProductionConfig()
+	config := zap.NewDevelopmentConfig()
+	config.OutputPaths = []string{"stdout"}
 	config.EncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 		enc.AppendString(t.Format("2006-01-02 15:04:05.000"))
 	}

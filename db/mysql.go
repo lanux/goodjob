@@ -13,8 +13,8 @@ var (
 )
 
 func init() {
-	c := config.Global.Mysql
-	connArgs := fmt.Sprintf("%s:%s@(%s)/good_job?charset=utf8&parseTime=True&loc=Local", c.Username, c.Password, c.Url)
+	c := config.Mysql
+	connArgs := fmt.Sprintf("%s:%s@%s", c.Username, c.Password, c.Url)
 	MYSQL, err := gorm.Open("mysql", connArgs)
 	if err != nil {
 		panic(err)

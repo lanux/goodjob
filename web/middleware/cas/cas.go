@@ -7,6 +7,7 @@ import (
 	"github.com/kataras/iris"
 	"github.com/lanux/goodjob/v1/common/consts"
 	"github.com/lanux/goodjob/v1/common/logger"
+	"github.com/lanux/goodjob/v1/common/utils"
 	"github.com/lanux/goodjob/v1/config"
 	"io/ioutil"
 	"net/http"
@@ -44,7 +45,9 @@ func (c *Client) Authentication(ctx iris.Context) {
 	} else {
 		u, err := validateTicket(tk)
 		if err != nil {
+			logger.Errorf("cas validate fail: %s", err)
 			RedirectToLogin(ctx)
+			ctx.StatusCode(http.StatusFound)
 			ctx.StopExecution()
 			return
 		}
@@ -56,7 +59,7 @@ func (c *Client) Authentication(ctx iris.Context) {
 }
 
 func GetResponseBody(url string) (string, error) {
-	response, err := http.Get(url)
+	response, err := utils.HttpClient.Get(url)
 	if err != nil {
 		return "", err
 	}
@@ -75,26 +78,25 @@ func (c *Client) RedirectToLogout(ctx iris.Context) {
 	if c.i != nil {
 		c.i.BeforeLogout(ctx)
 	}
-	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + LogoutPath)
+	u, err := url.Parse(config.Cas.CasServerUrlPrefix + LogoutPath)
 	if err != nil {
 		logger.Panic()
 	}
 	q := u.Query()
-	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
+	q.Add(consts.CAS_SERVICE, config.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	ctx.StatusCode(http.StatusFound)
 	ctx.Redirect(u.String(), http.StatusFound)
 	ctx.StopExecution()
 }
 
-// RedirectToLogout replies to the request with a redirect URL to authenticate with CAS.
 func RedirectToLogin(ctx iris.Context) {
-	u, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + LoginPath)
+	u, err := url.Parse(config.Cas.CasServerUrlPrefix + LoginPath)
 	if err != nil {
 		panic(err)
 	}
 	q := u.Query()
-	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
+	q.Add(consts.CAS_SERVICE, config.Cas.ServerName)
 	u.RawQuery = q.Encode()
 	ctx.Redirect(u.String(), http.StatusFound)
 }
@@ -131,13 +133,13 @@ type AttributesStruct struct {
 //
 // If the request returns a 404 then validateTicketCas1 will be returned.
 func validateTicket(ticket string) (*Response, error) {
-	validReq, err := url.Parse(config.Global.Cas.CasServerUrlPrefix + ValidatePath)
+	validReq, err := url.Parse(config.Cas.CasServerUrlPrefix + ValidatePath)
 	if err != nil {
 		return nil, err
 	}
 	q := validReq.Query()
 	q.Add(consts.CAS_TICKET, ticket)
-	q.Add(consts.CAS_SERVICE, config.Global.Cas.ServerName)
+	q.Add(consts.CAS_SERVICE, config.Cas.ServerName)
 	validReq.RawQuery = q.Encode()
 	user, err := GetResponseBody(validReq.String())
 	if err != nil {

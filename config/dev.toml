@@ -5,12 +5,12 @@ server_port = "8080"
 
 [cas]
 service_url="http://127.0.0.1:8080"
-cas_server_url_prefix="http://127.0.0.1:2280/uuc"
-cas_exclude_urls="/api/open/*;/api/allow/*;/api/logout"
+server_url_prefix="http://127.0.0.1:2280/uuc"
+exclude_urls="/api/open/*;/api/allow/*;/api/logout"
 
 
 [mysql]
-url="127.0.0.1:3308"
+url="(127.0.0.1:3308)/good_job?charset=utf8mb4&parseTime=True&loc=Local"
 username="root"
 password="root"
 maxOpenConns=20

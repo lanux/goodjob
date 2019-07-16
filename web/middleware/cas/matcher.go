@@ -25,10 +25,11 @@ func (m *RegexMatch) MatchAny(key string, patterns *[]string) bool {
 func (m *RegexMatch) Match(key string, pattern string) bool {
 	c, ok := m.Maps[pattern]
 	if !ok {
-		c, err := regexp.Compile(pattern)
+		re, err := regexp.Compile(pattern)
 		if err != nil {
 			panic(err)
 		}
+		c = re
 		m.Maps[pattern] = c
 	}
 	return c.MatchString(key)

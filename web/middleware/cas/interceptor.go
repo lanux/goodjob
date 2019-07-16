@@ -22,7 +22,7 @@ type DefaultInterceptor struct {
 // 返回true 跳过认证
 func (c *DefaultInterceptor) PreAuthentication(ctx iris.Context) bool {
 	if c.M.MatchAny(ctx.Path(), c.Excludes) {
-		ctx.StopExecution()
+		//ctx.StopExecution()
 		ctx.Skip() // 跳过授权
 		return true
 	}

@@ -1,17 +1,17 @@
-package http
+package utils
 
 import (
 	"crypto/tls"
 	"net/http"
 )
 
-var Client *http.Client
+var HttpClient *http.Client
 
 func init() {
-	Client = NewHttpClient()
+	HttpClient = newHttpClient()
 }
 
-func NewHttpClient() *http.Client {
+func newHttpClient() *http.Client {
 	transport := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	return &http.Client{Transport: transport}
 }
